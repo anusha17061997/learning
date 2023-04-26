@@ -1,0 +1,56 @@
+
+function test(time) {
+setTimeOut(() => {
+	return new Promise((resolve, reject) => {
+  resolve("Hi");
+  })
+}, time)
+}
+
+test(3000).then(msg => console.log(msg));
+
+[ 
+{
+"name": "Amit", "age": 25, "city": "Delhi"
+}, {
+"name": "Mohit", "age": 28, "city": "Delhi"
+}, {
+"name": "Suresh", "age": 30, "city": "Mumbai"
+} 
+]
+
+// output 
+{
+"Delhi": [ 
+	{
+		"name": "Amit", "age": 25, "city": "Delhi"
+	},
+  {
+		"name": "Mohit", "age": 28, "city": "Delhi"
+	} 
+ ],
+"Mumbai": [ { "name": "Suresh", "age": 30, "city": "Mumbai"} ]
+}
+
+
+function groupBy(arr) {
+let cityArr = [];
+arr.forEach((city) => {
+if(!cityArr.find(city.city)) cityArr.push(city.city)});
+let result = {
+
+}
+//initialize result
+cityArr.forEach((city) => result[city] = [])
+
+arr.forEach((ele) => {
+	if(cityArr.find(ele.city)) {
+  	result[ele.city] =  result[ele.city].push(ele);
+  }
+});
+
+return result;
+}
+
+
+
